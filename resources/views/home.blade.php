@@ -25,25 +25,25 @@
             </form>
         </div>
     </div>
-{{--            <form action="" id="form_registration">--}}
-{{--                <div class="div_form">--}}
-{{--                    <div class="header_form">--}}
-{{--                        Регистрация--}}
-{{--                    </div>--}}
-{{--                    Имя пользователя:--}}
-{{--                    <input type="text">--}}
-{{--                    Пароль:--}}
-{{--                    <input type="password">--}}
-{{--                </div>--}}
-{{--                <button type="submit" class="brn_reg_avto_sumbit">Зарегистрироваться</button>--}}
-{{--            </form>--}}
+    {{--            <form action="" id="form_registration">--}}
+    {{--                <div class="div_form">--}}
+    {{--                    <div class="header_form">--}}
+    {{--                        Регистрация--}}
+    {{--                    </div>--}}
+    {{--                    Имя пользователя:--}}
+    {{--                    <input type="text">--}}
+    {{--                    Пароль:--}}
+    {{--                    <input type="password">--}}
+    {{--                </div>--}}
+    {{--                <button type="submit" class="brn_reg_avto_sumbit">Зарегистрироваться</button>--}}
+    {{--            </form>--}}
 
-{{--    <div class="notification">--}}
-{{--        <div class="field_message">--}}
-{{--            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quaerat at consequuntur, unde voluptas fuga, repellat molestias molestiae quasi--}}
-{{--        </div>--}}
-{{--        <div class="delete_notification">--}}
-{{--            +--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{--    <div class="notification">--}}
+    {{--        <div class="field_message">--}}
+    {{--            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quaerat at consequuntur, unde voluptas fuga, repellat molestias molestiae quasi--}}
+    {{--        </div>--}}
+    {{--        <div class="delete_notification">--}}
+    {{--            +--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 @endsection
