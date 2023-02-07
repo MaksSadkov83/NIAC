@@ -13,6 +13,16 @@
 
 @section('content')
         <div class="container_table">
+            @if(session('error'))
+                <div>
+                    <p>{{ session('error') }}</p>
+                </div>
+            @endif
+            @if(session('success'))
+                <div>
+                    <p>{{ session('success') }}</p>
+                </div>
+            @endif
             <table id="table_for_all">
                 <thead>
                 <tr>
@@ -30,7 +40,7 @@
                             <td><a href="#">{{ $el->text_ }}</a></td>
                             <td>{{ $el->editor_id }}</td>
                             <td><a href="{{ route('update_exam_page', ['id' => $el->exam_id]) }}" ><button class="table_btn">&#8635;</button></a></td>
-                            <td><a href="#"><button class="table_btn">X</button></a></td>
+                            <td><a href="{{ route('delete_exam', ['id' => $el->exam_id]) }}"><button class="table_btn">X</button></a></td>
                         </tr>
                     @endforeach
                 </tbody>

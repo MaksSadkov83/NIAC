@@ -68,6 +68,7 @@ class AdminController extends Controller
         return redirect()->route('show_exam');
     }
 
+//    Логика обновления экзамена
     public function update_exam(Request $request){
         $update_exam = Exam::find($request->input('exam_id'));
 
@@ -79,7 +80,13 @@ class AdminController extends Controller
 
 //    Логика удаления теста
     public function delete_exam($id){
-
+        if (DB::table('question_topics')->where('exam_id', '=', $id)->count()){
+            return redirect()->route('show_exam')->with('error', 'Нельзя удлаить экзамен!!!\n Удалите сначала Темы экзамена.');
+        } else {
+            DB::table('editors')->where('exam_id', '=', $id)->delete();
+            DB::table('exams')->where('id', '=', $id)->delete();
+            return redirect()->route('show_exam')->with('success', 'Тест успешно удален');
+        }
     }
 
 //    Функция выхода из Админ панели

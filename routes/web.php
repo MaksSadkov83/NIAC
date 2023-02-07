@@ -27,6 +27,8 @@ Route::get('/admin/update_exam/{id}', [\App\Http\Controllers\AdminController::cl
 
 Route::get('/admin/show_exam', [\App\Http\Controllers\AdminController::class, 'show_exam_page'])->name('show_exam')->middleware('auth');
 
+Route::get('/admin/show_exam/delete/{id}', [\App\Http\Controllers\AdminController::class, 'delete_exam'])->name('delete_exam')->middleware('auth');
+
 Route::get('/admin/users', [\App\Http\Controllers\AdminController::class, 'show_users_page'])->name('users')->middleware('auth');
 
 Route::post('/admin/logout', [\App\Http\Controllers\AdminController::class, 'logout'])->name('logout')->middleware('auth');
