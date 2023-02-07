@@ -11,9 +11,6 @@ class Users extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['id', 'password'];
+    protected $fillable = ['name', 'password', 'telephon_number'];
 
-    public function role_users(){
-        return $this->hasOne(RoleUsers::class);
-    }
 }

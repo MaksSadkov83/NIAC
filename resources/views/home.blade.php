@@ -10,13 +10,13 @@
 
     <div class="show_window">
         <div class="two_form">
-            <form action="{{route('login')}}" method="POST" id="form_avtorization">
+            <form action="{{ route('login') }}" method="POST" id="form_avtorization">
                 @csrf
                 <div class="div_form">
                     <div class="header_form">
                         Авторизация
                     </div>
-                    Имя пользователя:
+                    Идентифиционные номер:
                     <input type="text" name="id" id="id">
                     Пароль:
                     <input type="password" name="password" id="password">
@@ -25,25 +25,32 @@
             </form>
         </div>
     </div>
-    {{--            <form action="" id="form_registration">--}}
-    {{--                <div class="div_form">--}}
-    {{--                    <div class="header_form">--}}
-    {{--                        Регистрация--}}
-    {{--                    </div>--}}
-    {{--                    Имя пользователя:--}}
-    {{--                    <input type="text">--}}
-    {{--                    Пароль:--}}
-    {{--                    <input type="password">--}}
-    {{--                </div>--}}
-    {{--                <button type="submit" class="brn_reg_avto_sumbit">Зарегистрироваться</button>--}}
-    {{--            </form>--}}
 
-    {{--    <div class="notification">--}}
-    {{--        <div class="field_message">--}}
-    {{--            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quaerat at consequuntur, unde voluptas fuga, repellat molestias molestiae quasi--}}
-    {{--        </div>--}}
-    {{--        <div class="delete_notification">--}}
-    {{--            +--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
+{{--    <form action="{{ route('registration') }}" method="POST" id="form_registration">--}}
+{{--        @csrf--}}
+{{--        <div class="div_form">--}}
+{{--            <div class="header_form">--}}
+{{--                Регистрация--}}
+{{--            </div>--}}
+{{--            ФИО:--}}
+{{--            <input type="text" id="user_name" name="user_name">--}}
+{{--            Номер телефона:--}}
+{{--            <input type="text" id="telephon_number" name="telephon_number">--}}
+{{--            Пароль:--}}
+{{--            <input type="password" id="password" name="password">--}}
+{{--            Роль:--}}
+{{--            <input type="text" id="role_user" name="role_user">--}}
+{{--        </div>--}}
+{{--        <button type="submit" class="brn_reg_avto_sumbit">Зарегистрироваться</button>--}}
+{{--    </form>--}}
+
+{{--        <div class="notification">--}}
+{{--            <div class="field_message">--}}
+{{--                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quaerat at consequuntur, unde voluptas fuga, repellat molestias molestiae quasi--}}
+{{--            </div>--}}
+{{--            <div class="delete_notification">--}}
+{{--                +--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
 @endsection

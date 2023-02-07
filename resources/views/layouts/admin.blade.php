@@ -10,8 +10,8 @@
 <body>
 <header>
     <div class="content_header">
-        <h1><a style="color: white; text-decoration: none;" href="{{ route('admin_home') }}">Тестирование</a> > {{ $user_id = \Illuminate\Support\Facades\Auth::id()}}</h1>
-        <form action="{{route('logout')}}" method="POST">
+        <h1><a style="color: white; text-decoration: none;" href="@yield('href_home')">Тестирование</a> @yield('who')</h1>
+        <form action="#" method="POST">
             @csrf
             <button>Выход</button>
         </form>

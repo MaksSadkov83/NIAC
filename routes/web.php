@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function (){
     return view('home');
 })->name('home');
+
+Route::get('/admin', [\App\Http\Controllers\AdminPanelSuperUserController::class, 'index'])->name('admin_panel_super_user');
+
+Route::get('/admin/users', [\App\Http\Controllers\AdminPanelSuperUserController::class, 'show_users'])->name('admin_panel_super_user_show_users');
+
+Route::post('/login', [\App\Http\Controllers\UsersController::class, 'login'])->name('login');
+
+Route::post('/', [\App\Http\Controllers\UsersController::class, 'registration'])->name('registration');
