@@ -24,6 +24,12 @@ class AdminPanelSuperUserController extends Controller
         return view('admin_panel_super_user.users', ['data' => $eximiners]);
     }
 
+    public function update_users_page(){
+        $users = DB::table('users')
+            ->join('role_users', 'users.id', 'role_users.user_id')
+            ->select('users.name', 'telephon_number', 'role_users.text_');
+    }
+
     public function add_examiners(Request $request){
         try {
             $examiners = Users::create([

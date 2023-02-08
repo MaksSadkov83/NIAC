@@ -21,6 +21,8 @@ Route::get('/admin', [\App\Http\Controllers\AdminPanelSuperUserController::class
 
 Route::get('/admin/users', [\App\Http\Controllers\AdminPanelSuperUserController::class, 'show_users'])->name('admin_panel_super_user_show_users');
 
+Route::post('/admin/users/update/{id}', [\App\Http\Controllers\AdminPanelSuperUserController::class, ''])->name('admin_panel_super_user_update_users_form');
+
 Route::post('/login', [\App\Http\Controllers\UsersController::class, 'login'])->name('login');
 
 Route::post('/', [\App\Http\Controllers\UsersController::class, 'registration'])->name('registration');
