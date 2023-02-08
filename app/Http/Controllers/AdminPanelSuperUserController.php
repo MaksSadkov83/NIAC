@@ -79,8 +79,6 @@ class AdminPanelSuperUserController extends Controller
     }
 
     public function logout(){
-        Auth::logoutCurrentDevice();
-
         return redirect()->route('home');
     }
 }
