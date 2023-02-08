@@ -19,7 +19,7 @@ class UsersController extends Controller
             if ($user_role->text_ == 'SuperAdmin'){
                 return redirect()->route('admin_panel_super_user');
             } else if ($user_role->text_ == 'Экзаменатор'){
-                echo "Экзаментатор";
+                return redirect()->route('admin_panel_examiner');
             } else if ($user_role->text_ == 'Экзаменующийся'){
                 echo "Экзаменующийся";
             }

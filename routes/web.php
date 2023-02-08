@@ -23,6 +23,10 @@ Route::get('/admin/users', [\App\Http\Controllers\AdminPanelSuperUserController:
 
 Route::get('/admin/users/{id}/update', [\App\Http\Controllers\AdminPanelSuperUserController::class, 'update_users_page'])->name('admin_panel_super_user_update_users_form');
 
+Route::get('/admin/examiner', [\App\Http\Controllers\AdminPanelExaminerController::class, 'index'])->name('admin_panel_examiner');
+
+Route::get('/admin/examiner/users', [\App\Http\Controllers\AdminPanelExaminerController::class, 'show_user'])->name('admin_panel_examiner_show_users');
+
 Route::get('/admin/logout', [\App\Http\Controllers\AdminPanelSuperUserController::class, 'logout'])->name('logout');
 
 Route::post('/admin/users/{id}/update', [\App\Http\Controllers\AdminPanelSuperUserController::class, 'update_examiners'])->name('admin_panel_super_user_update_user');
