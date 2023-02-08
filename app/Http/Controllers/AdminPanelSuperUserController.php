@@ -6,6 +6,7 @@ use App\Models\Exam;
 use App\Models\RoleUsers;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminPanelSuperUserController extends Controller
@@ -75,6 +76,12 @@ class AdminPanelSuperUserController extends Controller
         $role_user = RoleUsers::where('user_id', $id)->update(['text_' => $request->input('role_user')]);
 
         return redirect()->route('admin_panel_super_user_show_users')->with('success', 'Пользователь успешно обновлен');
+    }
+
+    public function logout(){
+        Auth::logoutCurrentDevice();
+
+        return redirect()->route('home');
     }
 }
 

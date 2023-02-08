@@ -11,7 +11,7 @@
 <header>
     <div class="content_header">
         <h1><a style="color: white; text-decoration: none;" href="@yield('href_home')">Тестирование</a> @yield('who')</h1>
-        <form action="#" method="POST">
+        <form action="@yield('logout')" method="POST">
             @csrf
             <button>Выход</button>
         </form>

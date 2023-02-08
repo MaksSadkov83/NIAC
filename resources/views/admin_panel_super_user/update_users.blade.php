@@ -4,6 +4,8 @@
 
 @section('who') Super Admin @endsection
 
+@section('logout'){{ route('logout_super_admin') }}@endsection
+
 @section('users')<span style="color: #3c8bff; margin-left: -15px; position: absolute;">></span>@endsection
 
 @section('side-bar')
