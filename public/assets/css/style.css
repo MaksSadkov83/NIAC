@@ -578,3 +578,39 @@ select{
 .list_answer label{
   cursor: pointer;
 }
+
+.notification{
+    width: 500px;
+    height: 70px;
+    background: whitesmoke;
+    border: 1px solid #ececec;;
+    font-size: 17px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 20px;
+}
+
+.delete_notification{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(45deg);
+    cursor: pointer;
+    color: black;
+    font-size: 20px;
+}
+
+.field_message{
+    font-size: 17px;
+    margin-top: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}

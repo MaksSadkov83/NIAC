@@ -51,7 +51,7 @@
                         <td>{{ $el->name }}</td>
                         <td>{{ $el->telephon_number }}</td>
                         <td>{{ $el->text_ }}</td>
-                        <td><a href="#"><button class="table_btn">&#8635;</button></a></td>
+                        <td><a href="{{ route('admin_panel_super_user_update_users_form', ['id' => $el->id]) }}"><button class="table_btn">&#8635;</button></a></td>
                         <td><a href="#"><button class="table_btn">X</button></a></td>
                     </tr>
                 @endforeach
