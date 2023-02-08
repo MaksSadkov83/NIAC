@@ -24,3 +24,5 @@ Route::get('/admin/users', [\App\Http\Controllers\AdminPanelSuperUserController:
 Route::post('/login', [\App\Http\Controllers\UsersController::class, 'login'])->name('login');
 
 Route::post('/', [\App\Http\Controllers\UsersController::class, 'registration'])->name('registration');
+
+Route::post('/admin/users', [\App\Http\Controllers\AdminPanelSuperUserController::class, 'add_examiners'])->name('add_examiners');

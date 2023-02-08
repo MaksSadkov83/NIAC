@@ -16,7 +16,10 @@
 
 @section('content')
     <div class="container_table_and_student">
-        <form class="form_add_student" action="#" method="POST" id="form_add_group">
+        <form class="form_add_student" action="{{ route('add_examiners') }}" method="POST" id="form_add_group">
+            @if(session('error'))
+                {{ session('error') }}
+            @endif
             @csrf
             <h2 style="margin-bottom: 50px;">
                 <span style="color: #3c8bff;">></span> Добавить пользователя (Экзаменатор):
