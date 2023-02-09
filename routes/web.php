@@ -27,7 +27,17 @@ Route::get('/admin/examiner', [\App\Http\Controllers\AdminPanelExaminerControlle
 
 Route::get('/admin/examiner/users', [\App\Http\Controllers\AdminPanelExaminerController::class, 'show_user'])->name('admin_panel_examiner_show_users');
 
+Route::get('/admin/examiner/users/{id}/update', [\App\Http\Controllers\AdminPanelExaminerController::class, 'update_users_page'])->name('admin_panel_examiner_update_user_show_form');
+
+Route::get('/admin/examiner/exams', [\App\Http\Controllers\AdminPanelExaminerController::class, 'show_exam'])->name('show_exam');
+
 Route::get('/admin/logout', [\App\Http\Controllers\AdminPanelSuperUserController::class, 'logout'])->name('logout');
+
+Route::post('/admin/examiner/users/{id}/update', [\App\Http\Controllers\AdminPanelExaminerController::class, 'update_examinee'])->name('update_examinee');
+
+Route::post('/admin/examiner/exams', [\App\Http\Controllers\AdminPanelExaminerController::class, 'add_exam'])->name('add_exam');
+
+Route::post('/admin/examiner/users', [\App\Http\Controllers\AdminPanelExaminerController::class, 'add_examinee'])->name('add_examinee');
 
 Route::post('/admin/users/{id}/update', [\App\Http\Controllers\AdminPanelSuperUserController::class, 'update_examiners'])->name('admin_panel_super_user_update_user');
 

@@ -8,15 +8,14 @@
 
 @section('side-bar')
     <div class="container_side-bar">
-        <a href="#">@yield('create_exam')Создать тест</a>
-        <a href="#">@yield('exam')Посмотреть тесты</a>
-        <a href="#">@yield('users')Пользователи</a>
+        <a href="{{ route('show_exam') }}">@yield('exam')Тесты</a>
+        <a href="{{ route('admin_panel_examiner_show_users') }}">@yield('users')Пользователи</a>
     </div>
 @endsection
 
 @section('content')
     <div class="container_table_and_student">
-        <form class="form_add_student" action="{{ route('add_examiners') }}" method="POST" id="form_add_group">
+        <form class="form_add_student" action="{{ route('add_examinee') }}" method="POST" id="form_add_group">
             @if(session('error'))
                 {{ session('error') }}
             @endif
@@ -53,7 +52,7 @@
                         <td>{{ $el->name }}</td>
                         <td>{{ $el->telephon_number }}</td>
                         <td>{{ $el->text_ }}</td>
-                        <td><a href="#"><button class="table_btn">&#8635;</button></a></td>
+                        <td><a href="{{ route('admin_panel_examiner_update_user_show_form', ['id' => $el->id]) }}"><button class="table_btn">&#8635;</button></a></td>
                         <td><a href="#"><button class="table_btn">X</button></a></td>
                     </tr>
                 @endforeach

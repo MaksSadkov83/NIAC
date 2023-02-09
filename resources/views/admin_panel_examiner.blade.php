@@ -6,8 +6,7 @@
 
 @section('side-bar')
     <div class="container_side-bar">
-        <a href="#">@yield('create_exam')Создать тест</a>
-        <a href="#">@yield('exam')Посмотреть тесты</a>
+        <a href="{{ route('show_exam') }}">@yield('exam')Тесты</a>
         <a href="{{ route('admin_panel_examiner_show_users') }}">@yield('users')Пользователи</a>
     </div>
 @endsection
