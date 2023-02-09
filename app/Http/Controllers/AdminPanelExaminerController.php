@@ -32,16 +32,24 @@ class AdminPanelExaminerController extends Controller
         $exam = DB::table('editors')
             ->join('users', 'users.id', 'editors.editor_id')
             ->join('exams', 'exams.id', 'editors.exam_id')
-            ->select('editors.id', 'users.name', 'exams.text_')
+            ->select('editors.id', 'users.name', 'exams.text_', 'editors.exam_id')
             ->get();
 
         return view('admin_panel_examiner.show_exam', ['data' => $exam]);
     }
 
+//    Страница обновления экзаменующигося
     public function update_users_page($id){
         $examinee_update = Users::find($id);
 
         return view('admin_panel_examiner.update_users', ['data' => $examinee_update, 'id' => $id]);
+    }
+
+//    Страница обновления теста (название)
+    public function update_exam_page($id){
+        $exam = Exam::find($id);
+
+        return view('admin_panel_examiner.update_exam', ['data' => $exam, 'id' => $id]);
     }
 
 //    добавление экзаминующигося
@@ -96,5 +104,12 @@ class AdminPanelExaminerController extends Controller
         return redirect()->route('show_exam');
     }
 
+    public function update_exam($id, Request $request){
+        $exam = Exam::find($id);
 
+        $exam->text_ = $request->input('exam_text');
+        $exam->save();
+
+        return redirect()->route('show_exam');
+    }
 }

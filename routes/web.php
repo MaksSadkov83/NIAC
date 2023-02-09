@@ -31,11 +31,15 @@ Route::get('/admin/examiner/users/{id}/update', [\App\Http\Controllers\AdminPane
 
 Route::get('/admin/examiner/exams', [\App\Http\Controllers\AdminPanelExaminerController::class, 'show_exam'])->name('show_exam');
 
+Route::get('/admin/examiner/exams/{id}/update', [\App\Http\Controllers\AdminPanelExaminerController::class, 'update_exam_page'])->name('update_exam_page');
+
 Route::get('/admin/logout', [\App\Http\Controllers\AdminPanelSuperUserController::class, 'logout'])->name('logout');
 
 Route::post('/admin/examiner/users/{id}/update', [\App\Http\Controllers\AdminPanelExaminerController::class, 'update_examinee'])->name('update_examinee');
 
 Route::post('/admin/examiner/exams', [\App\Http\Controllers\AdminPanelExaminerController::class, 'add_exam'])->name('add_exam');
+
+Route::post('/admin/examiner/exams/{id}/update', [\App\Http\Controllers\AdminPanelExaminerController::class, 'update_exam'])->name('update_exam');
 
 Route::post('/admin/examiner/users', [\App\Http\Controllers\AdminPanelExaminerController::class, 'add_examinee'])->name('add_examinee');
 

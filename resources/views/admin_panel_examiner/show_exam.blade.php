@@ -47,7 +47,7 @@
                             <td>{{ $el->id}}</td>
                             <td>{{ $el->name }}</td>
                             <td>{{ $el->text_ }}</td>
-                            <td><a href="#"><button class="table_btn">&#8635;</button></a></td>
+                            <td><a href="{{ route('update_exam_page', ['id' => $el->exam_id]) }}"><button class="table_btn">&#8635;</button></a></td>
                             <td><a href="#"><button class="table_btn">X</button></a></td>
                         </tr>
                     @endforeach
