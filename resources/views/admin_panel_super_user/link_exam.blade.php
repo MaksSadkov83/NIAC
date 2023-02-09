@@ -4,7 +4,7 @@
 
 @section('who') > Super Admin > {{ \Illuminate\Support\Facades\Auth::id() }}@endsection
 
-@section('users')<span style="color: #3c8bff; margin-left: -15px; position: absolute;">></span>@endsection
+@section('link_exam')<span style="color: #3c8bff; margin-left: -15px; position: absolute;">></span>@endsection
 
 @section('side-bar')
     <div class="container_side-bar">
@@ -20,33 +20,34 @@
         <form class="form_add_student" action="#" method="POST" id="form_add_group">
             @csrf
             <h2 style="margin-bottom: 50px;">
-                <span style="color: #3c8bff;">></span> Добавить пользователя:
+                <span style="color: #3c8bff;">></span> Привязать Тест:
             </h2>
-            ФИО:
-            <input type="text" name="user_name" id="user_name">
-            Пароль пользователя:
-            <input type="password" name="password" id="password">
-            Роль пользователя:
-            <input list="role_user" name="role_user_choose" id="role_user_choose">
-                <datalist id="role_user">
-                    <option value="SuperAdmin"></option>
-                    <option value="Экзаменатор"></option>
-                    <option value="Экзаменующийся"></option>
+            Название теста:
+            <input list="exam_list" name="exam_choose" id="exam_choose">
+                <datalist id="exam_list">
+                    @foreach($exam_list as $el)
+                        <option value="{{ $el->id }}">{{ $el->text_ }}</option>
+                    @endforeach
                 </datalist>
-            Автивен/Неактивен:
-            <input type="hidden" id="active_user" name="active_user" value="0">
-            <input type="checkbox" id="active_user" name="active_user" value="1">
-            <button class="add_btn" type="submit">Добавить</button>
+            Студент:
+            <input list="examiner_list" name="examiner" id="examiner">
+                <datalist id="examiner_list">
+                    @foreach($students as $el)
+                        <option value="{{ $el->id }}">{{ $el->name }}</option>
+                    @endforeach
+                </datalist>
+            Минимальный балл за тест:
+            <input type="number" name="min_score" id="min_score">
+            <button class="add_btn" type="submit">Привязать</button>
         </form>
         <div class="container_table">
             <table id="table_for_all">
                 <thead>
                 <tr>
                     <th>id</th>
-                    <th>ФИО</th>
-                    <th>Роль</th>
-                    <th>Номер телефона</th>
-                    <th>Активность</th>
+                    <th>Тест</th>
+                    <th>Студент</th>
+                    <th>Минимальный балл</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -57,8 +58,7 @@
                         <td>{{ $el->id }}</td>
                         <td>{{ $el->name }}</td>
                         <td>{{ $el->text_ }}</td>
-                        <td>{{ $el->telephon_number }}</td>
-                        <td>{{ $el->active }}</td>
+                        <td>{{ $el->min_score }}</td>
                         <td><a href="#"><button class="table_btn">&#8635;</button></a></td>
                         <td><a href="#"><button class="table_btn">X</button></a></td>
                     </tr>

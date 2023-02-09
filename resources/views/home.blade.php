@@ -40,6 +40,9 @@
 {{--            <input type="password" id="password" name="password">--}}
 {{--            Роль:--}}
 {{--            <input type="text" id="role_user" name="role_user">--}}
+{{--            Автивен/Неактивен:--}}
+{{--            <input type="hidden" id="active_user" name="active_user" value="0">--}}
+{{--            <input type="checkbox" id="active_user" name="active_user" value="1">--}}
 {{--        </div>--}}
 {{--        <button type="submit" class="brn_reg_avto_sumbit">Зарегистрироваться</button>--}}
 {{--    </form>--}}
@@ -52,5 +55,4 @@
 {{--                +--}}
 {{--            </div>--}}
 {{--        </div>--}}
-
 @endsection

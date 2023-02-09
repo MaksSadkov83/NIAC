@@ -11,6 +11,6 @@ class Users extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name', 'password', 'telephon_number'];
+    protected $fillable = ['name', 'password', 'telephon_number', 'active'];
 
 }

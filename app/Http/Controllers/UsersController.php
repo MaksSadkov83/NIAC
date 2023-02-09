@@ -10,27 +10,37 @@ use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
+//    авторизация
     public function login(Request $request){
         if (!Auth::attempt($request->only('id', 'password'))){
             echo "Error";
         } else {
             $user_role = DB::table('role_users')->where('user_id', '=', $request->input('id'))->first();
+            $user = Users::find($request->input('id'));
 
             if ($user_role->text_ == 'SuperAdmin'){
-                return redirect()->route('admin_panel_super_user');
+                if ($user->active == 1){
+                    return redirect()->route('admin_panel_su');
+                }
             } else if ($user_role->text_ == 'Экзаменатор'){
-                return redirect()->route('admin_panel_examiner');
+                if ($user->active == 1){
+                    echo 'Экзаменатор';
+                }
             } else if ($user_role->text_ == 'Экзаменующийся'){
-                echo "Экзаменующийся";
+                if ($user->active == 1){
+                    echo 'Экзаменующийся';
+                }
             }
         }
     }
 
+//    регистрация пользователей ()
     public function registration(Request $request){
         $user_id = Users::create([
             'name' => $request->input('user_name'),
             'telephon_number' => $request->input('telephon_number'),
             'password' => bcrypt($request->input('password')),
+            'active' => $request->input('active_user'),
         ]);
 
         RoleUsers::create([

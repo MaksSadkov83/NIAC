@@ -259,12 +259,12 @@ table td{
   box-sizing: border-box;
 }
 
-.form_add_student input[type="checkbox"]{
-  margin: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  position: absolute;
-}
+/*.form_add_student input[type="checkbox"]{*/
+/*  margin: 0;*/
+/*  -webkit-appearance: none;*/
+/*  appearance: none;*/
+/*  position: absolute;*/
+/*}*/
 
 .form_add_student input[type="checkbox"]:checked + .check_name:after{
   opacity: 1;

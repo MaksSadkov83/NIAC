@@ -11,7 +11,7 @@
 <header>
     <div class="content_header">
         <h1><a style="color: white; text-decoration: none;" href="@yield('href_home')">Тестирование</a> @yield('who')</h1>
-        <form action="{{ route('logout') }}" method="GET">
+        <form action="#" method="GET">
             @csrf
             <button>Выход</button>
         </form>

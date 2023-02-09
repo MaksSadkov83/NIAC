@@ -4,7 +4,7 @@
 
 @section('who') > Super Admin > {{ \Illuminate\Support\Facades\Auth::id() }}@endsection
 
-@section('users')<span style="color: #3c8bff; margin-left: -15px; position: absolute;">></span>@endsection
+@section('create_exam')<span style="color: #3c8bff; margin-left: -15px; position: absolute;">></span>@endsection
 
 @section('side-bar')
     <div class="container_side-bar">
@@ -20,22 +20,15 @@
         <form class="form_add_student" action="#" method="POST" id="form_add_group">
             @csrf
             <h2 style="margin-bottom: 50px;">
-                <span style="color: #3c8bff;">></span> Добавить пользователя:
+                <span style="color: #3c8bff;">></span> Добавить Тест:
             </h2>
-            ФИО:
-            <input type="text" name="user_name" id="user_name">
-            Пароль пользователя:
-            <input type="password" name="password" id="password">
-            Роль пользователя:
-            <input list="role_user" name="role_user_choose" id="role_user_choose">
-                <datalist id="role_user">
-                    <option value="SuperAdmin"></option>
-                    <option value="Экзаменатор"></option>
-                    <option value="Экзаменующийся"></option>
-                </datalist>
-            Автивен/Неактивен:
-            <input type="hidden" id="active_user" name="active_user" value="0">
-            <input type="checkbox" id="active_user" name="active_user" value="1">
+            Название теста:
+            <input type="text" name="exam_text" id="exam_text">
+            Экзаменатор:
+            <input list="examiner_list" name="examiner" id="examiner">
+            <datalist id="examiner_list">
+
+            </datalist>
             <button class="add_btn" type="submit">Добавить</button>
         </form>
         <div class="container_table">
@@ -43,10 +36,8 @@
                 <thead>
                 <tr>
                     <th>id</th>
-                    <th>ФИО</th>
-                    <th>Роль</th>
-                    <th>Номер телефона</th>
-                    <th>Активность</th>
+                    <th>Тест</th>
+                    <th>Автор</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -55,10 +46,8 @@
                 @foreach($data as $el)
                     <tr>
                         <td>{{ $el->id }}</td>
-                        <td>{{ $el->name }}</td>
-                        <td>{{ $el->text_ }}</td>
-                        <td>{{ $el->telephon_number }}</td>
-                        <td>{{ $el->active }}</td>
+                        <td>{{ $data->text_ }}</td>
+                        <td>{{ $data->name }}</td>
                         <td><a href="#"><button class="table_btn">&#8635;</button></a></td>
                         <td><a href="#"><button class="table_btn">X</button></a></td>
                     </tr>
