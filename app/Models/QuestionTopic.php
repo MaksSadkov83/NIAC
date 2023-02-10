@@ -12,4 +12,8 @@ class QuestionTopic extends Model
     public $timestamps = false;
 
     protected $fillable = ['text_', 'exam_id'];
+
+    public function question(){
+        return $this->hasMany(Question::class);
+    }
 }

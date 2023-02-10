@@ -25,7 +25,7 @@
         @yield('content')
     </div>
 </div>
-<script src="/code_for_students.js"></script>
-<script src="/create_table.js"></script>
+<script src="/assets/scripts/js/code_for_topic_question.js"></script>
+<script src="/assets/scripts/js/code_delete_notification.js"></script>
 </body>
 </html>

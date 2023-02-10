@@ -4,10 +4,11 @@
 
 @section('who') > Super Admin > {{ \Illuminate\Support\Facades\Auth::id() }}@endsection
 
-@section('create_exam')<span style="color: #3c8bff; margin-left: -15px; position: absolute;">></span>@endsection
+@section('create_exam')<img src="/assets/img/desc.png" alt="" class="desc">@endsection
 
 @section('side-bar')
     <div class="container_side-bar">
+        <img src="/assets/img/nao_logo2 — копия (2).png" alt="" class="logo_nao">
         <a href="{{ route('admin_panel_su_show_exam') }}">@yield('create_exam')Тесты</a>
         <a href="{{ route('admin_panel_su_show_users') }}">@yield('users')Пользователи</a>
         <a href="{{ route('admin_panel_su_link_exam') }}">@yield('link_exam')Привязать тесты</a>
@@ -48,7 +49,7 @@
                 @foreach($data as $el)
                     <tr>
                         <td>{{ $el->id }}</td>
-                        <td><a href="#">{{ $el->text_ }}</a></td>
+                        <td><a href="{{ route('question_topic_and_question_page', ['id' => $el->exam_id]) }}">{{ $el->text_ }}</a></td>
                         <td>{{ $el->name }}</td>
                         <td><a href="#"><button class="table_btn">&#8635;</button></a></td>
                         <td><a href="#"><button class="table_btn">X</button></a></td>

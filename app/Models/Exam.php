@@ -12,4 +12,8 @@ class Exam extends Model
     public $timestamps = false;
 
     protected $fillable = ['text_'];
+
+    public function question_topics(){
+        return $this->hasMany(QuestionTopic::class);
+    }
 }

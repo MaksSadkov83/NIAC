@@ -4,10 +4,11 @@
 
 @section('who') > Super Admin > {{ \Illuminate\Support\Facades\Auth::id() }}@endsection
 
-@section('users')<span style="color: #3c8bff; margin-left: -15px; position: absolute;">></span>@endsection
+@section('users')<img src="/assets/img/desc.png" alt="" class="desc">@endsection
 
 @section('side-bar')
     <div class="container_side-bar">
+        <img src="/assets/img/nao_logo2 — копия (2).png" alt="" class="logo_nao">
         <a href="{{ route('admin_panel_su_show_exam') }}">@yield('create_exam')Тесты</a>
         <a href="{{ route('admin_panel_su_show_users') }}">@yield('users')Пользователи</a>
         <a href="{{ route('admin_panel_su_link_exam') }}">@yield('link_exam')Привязать тесты</a>
@@ -28,13 +29,13 @@
             <input type="text" name="telephone_number" id="telephone_number" value="{{ $data->telephon_number }}">
             Пароль пользователя (если не хотите менять оставьте поле пустым):
             <input type="password" name="password" id="password">
-            Роль пользователя (если не хотите менять пропустите поле, иначе просто сотрите):
-            <input list="role_user" name="role_user_choose" id="role_user_choose" value="{{ $data->text_ }}">
-            <datalist id="role_user">
-                <option value="SuperAdmin"></option>
-                <option value="Экзаменатор"></option>
-                <option value="Экзаменующийся"></option>
-            </datalist>
+{{--            Роль пользователя (если не хотите менять пропустите поле, иначе просто сотрите):--}}
+{{--            <input list="role_user" name="role_user_choose" id="role_user_choose" value="{{ $data->text_ }}">--}}
+{{--            <datalist id="role_user">--}}
+{{--                <option value="SuperAdmin"></option>--}}
+{{--                <option value="Экзаменатор"></option>--}}
+{{--                <option value="Экзаменующийся"></option>--}}
+{{--            </datalist>--}}
             Автивен/Неактивен (если не хотите менять пропустите поле):
             <input type="hidden" id="active_user" name="active_user" value="0">
             @if($data->active == 1)

@@ -4,10 +4,11 @@
 
 @section('who') > Super Admin > {{ \Illuminate\Support\Facades\Auth::id() }}@endsection
 
-@section('link_exam')<span style="color: #3c8bff; margin-left: -15px; position: absolute;">></span>@endsection
+@section('link_exam')<img src="/assets/img/desc.png" alt="" class="desc">@endsection
 
 @section('side-bar')
     <div class="container_side-bar">
+        <img src="/assets/img/nao_logo2 — копия (2).png" alt="" class="logo_nao">
         <a href="{{ route('admin_panel_su_show_exam') }}">@yield('create_exam')Тесты</a>
         <a href="{{ route('admin_panel_su_show_users') }}">@yield('users')Пользователи</a>
         <a href="{{ route('admin_panel_su_link_exam') }}">@yield('link_exam')Привязать тесты</a>
@@ -23,7 +24,7 @@
                 <span style="color: #3c8bff;">></span> Привязать Тест:
             </h2>
             Название теста:
-            <input list="exam_list" name="exam_choose" id="exam_choose">
+            <input type="text" list="exam_list" name="exam_choose" id="exam_choose">
                 <datalist id="exam_list">
                     @foreach($exam_list as $el)
                         <option value="{{ $el->id }}">{{ $el->text_ }}</option>

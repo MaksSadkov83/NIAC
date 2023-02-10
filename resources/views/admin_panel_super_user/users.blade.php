@@ -4,10 +4,11 @@
 
 @section('who') > Super Admin > {{ \Illuminate\Support\Facades\Auth::id() }}@endsection
 
-@section('users')<span style="color: #3c8bff; margin-left: -15px; position: absolute;">></span>@endsection
+@section('users')<img src="/assets/img/desc.png" alt="" class="desc">@endsection
 
 @section('side-bar')
     <div class="container_side-bar">
+        <img src="/assets/img/nao_logo2 — копия (2).png" alt="" class="logo_nao">
         <a href="{{ route('admin_panel_su_show_exam') }}">@yield('create_exam')Тесты</a>
         <a href="{{ route('admin_panel_su_show_users') }}">@yield('users')Пользователи</a>
         <a href="{{ route('admin_panel_su_link_exam') }}">@yield('link_exam')Привязать тесты</a>
@@ -44,7 +45,7 @@
             <table id="table_for_all">
                 <thead>
                 <tr>
-                    <th>id</th>
+                    <th>Индитификатор</th>
                     <th>ФИО</th>
                     <th>Роль</th>
                     <th>Номер телефона</th>
@@ -69,4 +70,15 @@
             </table>
         </div>
     </div>
+
+    @if(session('error'))
+        <div class="notification">
+            <div class="field_message">
+                {{ session('error') }}
+            </div>
+            <div class="delete_notification">
+                +
+            </div>
+        </div>
+    @endif
 @endsection

@@ -33,7 +33,7 @@ class AdminPanelSuperUserController extends Controller
         $exam = DB::table('editors')
             ->join('users', 'users.id', '=', 'editors.editor_id')
             ->join('exams', 'exams.id', '=', 'editors.exam_id')
-            ->select('editors.id', 'users.name', 'exams.text_')
+            ->select('editors.id', 'users.name', 'exams.text_', 'editors.exam_id')
             ->get();
 
         $users = DB::table('users')
@@ -96,7 +96,10 @@ class AdminPanelSuperUserController extends Controller
     }
 
 //    Страница добавления тем, вопросов и ответов к вопросам
-
+    public function question_topic_and_question_page($id){
+        $exam = Exam::find($id);
+        return view('admin_panel_super_user.question_topic_and_question', ['name_exam' => $exam->text_]);
+    }
 
 //    Логика добавления пользователей в систему
     public function add_users(Request $request){
@@ -115,7 +118,7 @@ class AdminPanelSuperUserController extends Controller
 
             return redirect()->route('admin_panel_su_show_users');
         } catch (\Illuminate\Database\QueryException){
-            return back()->withError('Пользователь с таким номеом телефона уже существует');
+            return back()->withError('Пользователь с таким номером телефона уже существует!!!');
         }
     }
 
@@ -125,25 +128,23 @@ class AdminPanelSuperUserController extends Controller
 
         if (!$request->input('password') == null){
             $users->password = bcrypt($request->input('password'));
-            $users->active = $request->input('active_user');
             $users->telephon_number = $request->input('telephone_number');
             $users->name = $request->input('user_name');
             $users->active = $request->input('active_user');
 
             $users->save();
 
-            RoleUsers::where('user_id', $id)->update(['text_' => $request->input('role_user_choose')]);
+//            RoleUsers::where('user_id', $id)->update(['text_' => $request->input('role_user_choose')]);
 
             return redirect()->route('admin_panel_su_show_users');
         } else {
             $users->active = $request->input('active_user');
             $users->telephon_number = $request->input('telephone_number');
             $users->name = $request->input('user_name');
-            $users->active = $request->input('active_user');
 
             $users->save();
 
-            RoleUsers::where('user_id', $id)->update(['text_' => $request->input('role_user_choose')]);
+//            RoleUsers::where('user_id', $id)->update(['text_' => $request->input('role_user_choose')]);
 
             return redirect()->route('admin_panel_su_show_users');
         }
@@ -162,5 +163,4 @@ class AdminPanelSuperUserController extends Controller
 
         return redirect()->route('admin_panel_su_show_exam');
     }
-
 }

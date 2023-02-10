@@ -12,4 +12,8 @@ class Question extends Model
     public $timestamps = false;
 
     protected $fillable = ['text_'];
+
+    public function options(){
+        return $this->hasMany(Option::class);
+    }
 }

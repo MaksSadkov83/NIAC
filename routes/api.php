@@ -18,3 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::apiResources([
+    'admin/exam' => \App\Http\Controllers\Api\CreateQuestionTopicsWithQuestionController::class
+]);
