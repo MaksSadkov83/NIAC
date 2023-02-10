@@ -28,4 +28,8 @@ Route::controller(\App\Http\Controllers\AdminPanelSuperUserController::class)->g
    Route::get('/admin/exam', 'show_exam')->name('admin_panel_su_show_exam');
    Route::get('/admin/link_exam', 'show_link_exam')->name('admin_panel_su_link_exam');
    Route::get('/admin/result_exam', 'show_result_exam')->name('admin_panel_us_show_result_exam');
+   Route::get('/admin/users/{id}/update', 'update_users_page')->name('update_users_page');
+   Route::post('/admin/users', 'add_users')->name('add_user');
+   Route::post('/admin/users/{id}/update', 'update_users')->name('update_users');
+   Route::post('/admin/exam', 'add_exam')->name('admin_panel_su_add_exam');
 });

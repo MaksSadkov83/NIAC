@@ -32,7 +32,7 @@
                 </thead>
                 <tbody>
                 @if($data == null)
-                    <tr><td><h2>Записей нет</h2></td></tr>
+
                 @else
                     @foreach($data as $el)
                         <tr>

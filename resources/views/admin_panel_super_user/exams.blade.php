@@ -17,7 +17,7 @@
 
 @section('content')
     <div class="container_table_and_student">
-        <form class="form_add_student" action="#" method="POST" id="form_add_group">
+        <form class="form_add_student" action="{{ route('admin_panel_su_add_exam') }}" method="POST" id="form_add_group">
             @csrf
             <h2 style="margin-bottom: 50px;">
                 <span style="color: #3c8bff;">></span> Добавить Тест:
@@ -25,7 +25,7 @@
             Название теста:
             <input type="text" name="exam_text" id="exam_text">
             Экзаменатор:
-            <input list="examiner_list" name="examiner" id="examiner">
+            <input list="examiner_list" name="examiner_id" id="examiner_id">
             <datalist id="examiner_list">
                 @foreach($examiners as $el)
                     <option value="{{ $el->id }}">{{ $el->name }}</option>
@@ -48,8 +48,8 @@
                 @foreach($data as $el)
                     <tr>
                         <td>{{ $el->id }}</td>
-                        <td>{{ $data->text_ }}</td>
-                        <td>{{ $data->name }}</td>
+                        <td><a href="#">{{ $el->text_ }}</a></td>
+                        <td>{{ $el->name }}</td>
                         <td><a href="#"><button class="table_btn">&#8635;</button></a></td>
                         <td><a href="#"><button class="table_btn">X</button></a></td>
                     </tr>

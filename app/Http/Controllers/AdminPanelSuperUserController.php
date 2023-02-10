@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Editors;
 use App\Models\Exam;
+use App\Models\RoleUsers;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -81,4 +83,84 @@ class AdminPanelSuperUserController extends Controller
            return view('admin_panel_super_user.result_exam', ['data' => $report_exam_students]);
        } else return view('admin_panel_super_user.result_exam', ['data' => null]);
     }
+
+//    Страница обновления пользователя
+    public function update_users_page($id){
+        $users = DB::table('users')
+            ->join('role_users', 'users.id', 'role_users.user_id')
+            ->select('users.id', 'users.name', 'users.telephon_number', 'users.active', 'role_users.text_')
+            ->where('users.id', '=', $id)
+            ->first();
+
+        return view('admin_panel_super_user.update_users', ['data' => $users]);
+    }
+
+//    Страница добавления тем, вопросов и ответов к вопросам
+
+
+//    Логика добавления пользователей в систему
+    public function add_users(Request $request){
+        try {
+            $users = Users::create([
+                'name' => $request->input('user_name'),
+                'password' => bcrypt($request->input('password')),
+                'telephon_number' => $request->input('telephone_number'),
+                'active' => $request->input('active_user'),
+            ]);
+
+            RoleUsers::create([
+                'user_id' => $users->id,
+                'text_' => $request->input('role_user_choose'),
+            ]);
+
+            return redirect()->route('admin_panel_su_show_users');
+        } catch (\Illuminate\Database\QueryException){
+            return back()->withError('Пользователь с таким номеом телефона уже существует');
+        }
+    }
+
+//    Логика обновления пользователей
+    public function update_users($id, Request $request){
+        $users = Users::find($id);
+
+        if (!$request->input('password') == null){
+            $users->password = bcrypt($request->input('password'));
+            $users->active = $request->input('active_user');
+            $users->telephon_number = $request->input('telephone_number');
+            $users->name = $request->input('user_name');
+            $users->active = $request->input('active_user');
+
+            $users->save();
+
+            RoleUsers::where('user_id', $id)->update(['text_' => $request->input('role_user_choose')]);
+
+            return redirect()->route('admin_panel_su_show_users');
+        } else {
+            $users->active = $request->input('active_user');
+            $users->telephon_number = $request->input('telephone_number');
+            $users->name = $request->input('user_name');
+            $users->active = $request->input('active_user');
+
+            $users->save();
+
+            RoleUsers::where('user_id', $id)->update(['text_' => $request->input('role_user_choose')]);
+
+            return redirect()->route('admin_panel_su_show_users');
+        }
+    }
+
+//    логика добавления теста
+    public function add_exam(Request $request){
+        $exam = Exam::create([
+            'text_' => $request->input('exam_text'),
+        ]);
+
+        Editors::create([
+           'editor_id' => $request->input('examiner_id'),
+           'exam_id' => $exam->id,
+        ]);
+
+        return redirect()->route('admin_panel_su_show_exam');
+    }
+
 }

@@ -17,13 +17,15 @@
 
 @section('content')
     <div class="container_table_and_student">
-        <form class="form_add_student" action="#" method="POST" id="form_add_group">
+        <form class="form_add_student" action="{{ route('add_user') }}" method="POST" id="form_add_group">
             @csrf
             <h2 style="margin-bottom: 50px;">
                 <span style="color: #3c8bff;">></span> Добавить пользователя:
             </h2>
             ФИО:
             <input type="text" name="user_name" id="user_name">
+            Номер телефона:
+            <input type="text" name="telephone_number" id="telephone_number">
             Пароль пользователя:
             <input type="password" name="password" id="password">
             Роль пользователя:
@@ -59,7 +61,7 @@
                         <td>{{ $el->text_ }}</td>
                         <td>{{ $el->telephon_number }}</td>
                         <td>{{ $el->active }}</td>
-                        <td><a href="#"><button class="table_btn">&#8635;</button></a></td>
+                        <td><a href="{{ route('update_users_page', ['id' => $el->id]) }}"><button class="table_btn">&#8635;</button></a></td>
                         <td><a href="#"><button class="table_btn">X</button></a></td>
                     </tr>
                 @endforeach
