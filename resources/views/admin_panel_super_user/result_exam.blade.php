@@ -27,8 +27,6 @@
                     <th>Тест</th>
                     <th>Результат теста</th>
                     <th>Дата сдачи</th>
-                    <th></th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,8 +40,6 @@
                             <td>{{ $el->text_ }}</td>
                             <td>{{ $el->exam_result }}</td>
                             <td>{{ $el->exam_date }}</td>
-                            <td><a href="#"><button class="table_btn">&#8635;</button></a></td>
-                            <td><a href="#"><button class="table_btn">X</button></a></td>
                         </tr>
                     @endforeach
                 @endif

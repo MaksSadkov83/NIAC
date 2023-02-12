@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Editors;
 use App\Models\Exam;
 use App\Models\RoleUsers;
+use App\Models\StudentExam;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -98,7 +99,39 @@ class AdminPanelSuperUserController extends Controller
 //    Страница добавления тем, вопросов и ответов к вопросам
     public function question_topic_and_question_page($id){
         $exam = Exam::find($id);
-        return view('admin_panel_super_user.question_topic_and_question', ['name_exam' => $exam->text_]);
+        return view('admin_panel_super_user.question_topic_and_question', ['name_exam' => $exam->text_, 'id' => $id]);
+    }
+
+//    Страница обновления привязки теста к студенту
+    public function update_link_exam_page($id){
+        $exams = Exam::all();
+        $students = DB::table('users')
+            ->join('role_users', 'users.id', '=', 'role_users.user_id')
+            ->select('users.name', 'users.id')
+            ->where([
+                ['role_users.text_', '=', 'Экзаменующийся'],
+                ['users.active', '=', '1']
+            ])
+            ->get();
+
+        $student_answers = StudentExam::find($id);
+
+        $current_users = DB::table('users')
+            ->join('role_users', 'users.id', '=', 'role_users.user_id')
+            ->select('users.name')
+            ->where('users.id' ,'=', $student_answers->student_id)
+            ->first();
+
+        $current_exam = Exam::find($student_answers->exam_id);
+
+        return view('admin_panel_super_user.update_link_exam',
+            [
+                'exam_list' => $exams,
+                'students' => $students,
+                'current_users' => $current_users,
+                'current_exam' => $current_exam,
+                'student_answers' => $student_answers,
+            ]);
     }
 
 //    Логика добавления пользователей в систему
@@ -136,7 +169,7 @@ class AdminPanelSuperUserController extends Controller
 
 //            RoleUsers::where('user_id', $id)->update(['text_' => $request->input('role_user_choose')]);
 
-            return redirect()->route('admin_panel_su_show_users');
+            return redirect()->route('admin_panel_su_show_users')->with('success', 'Запись успешно обновлена');
         } else {
             $users->active = $request->input('active_user');
             $users->telephon_number = $request->input('telephone_number');
@@ -146,7 +179,7 @@ class AdminPanelSuperUserController extends Controller
 
 //            RoleUsers::where('user_id', $id)->update(['text_' => $request->input('role_user_choose')]);
 
-            return redirect()->route('admin_panel_su_show_users');
+            return redirect()->route('admin_panel_su_show_users')->with('success', 'Запись успешно обновлена');
         }
     }
 
@@ -161,6 +194,37 @@ class AdminPanelSuperUserController extends Controller
            'exam_id' => $exam->id,
         ]);
 
-        return redirect()->route('admin_panel_su_show_exam');
+        return redirect()->route('admin_panel_su_show_exam')->with('success', 'Тест успешно создан!!');
+    }
+
+//    Логика привязки теста к студенту
+    public function link_exam(Request $request){
+        StudentExam::create([
+            'student_id' => $request->input('student'),
+            'exam_id' => $request->input('exam_choose'),
+            'min_score' => $request->input('min_score'),
+        ]);
+
+        return redirect()->route('admin_panel_su_link_exam')->with('success', 'Запись успешно создана!!');
+    }
+
+//    Логика обновления привязки теста к студенту
+    public function update_link_exam($id, Request $request){
+        $student_answer = StudentExam::find($id);
+
+        $student_answer->student_id = $request->input('student');
+        $student_answer->exam_id = $request->input('exam_choose');
+        $student_answer->min_score = $request->input('min_score');
+
+        $student_answer->save();
+
+        return redirect()->route('admin_panel_su_link_exam')->with('success', 'Запись успешно обновлена!!!');
+    }
+
+//    Логика удаления привязки теста к студенту
+    public function delete_link_exam($id){
+        StudentExam::destroy($id);
+
+        return redirect()->route('admin_panel_su_link_exam')->with('success', 'Запись успешно удалена!!');
     }
 }

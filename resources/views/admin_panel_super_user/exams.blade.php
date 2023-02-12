@@ -59,4 +59,15 @@
             </table>
         </div>
     </div>
+
+    @if(session('success'))
+        <div class="notification">
+            <div class="field_message">
+                {{ session('success') }}
+            </div>
+            <div class="delete_notification">
+                +
+            </div>
+        </div>
+    @endif
 @endsection

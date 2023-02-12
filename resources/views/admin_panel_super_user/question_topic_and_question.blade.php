@@ -18,7 +18,7 @@
 
 @section('content')
     <div class="container_for_card">
-        <h2>Тест: {{ $name_exam }}</h2>
+        <h2 id="{{ $id }}">Тест: {{ $name_exam }}</h2>
         <br>
         <div class="card_topic">
             <div class="topic">

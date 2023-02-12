@@ -32,6 +32,7 @@ class UsersController extends Controller
                 }
             }
         }
+//        Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException
     }
 
 //    регистрация пользователей ()
@@ -47,6 +48,13 @@ class UsersController extends Controller
            'user_id' => $user_id->id,
             'text_' => $request->input('role_user')
         ]);
+
+        return redirect()->route('home');
+    }
+
+//    Выход из админ панели
+    public function logout(){
+        Auth::logoutCurrentDevice();
 
         return redirect()->route('home');
     }

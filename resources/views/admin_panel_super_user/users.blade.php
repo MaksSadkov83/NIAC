@@ -51,7 +51,6 @@
                     <th>Номер телефона</th>
                     <th>Активность</th>
                     <th></th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -62,8 +61,7 @@
                         <td>{{ $el->text_ }}</td>
                         <td>{{ $el->telephon_number }}</td>
                         <td>{{ $el->active }}</td>
-                        <td><a href="{{ route('update_users_page', ['id' => $el->id]) }}"><button class="table_btn">&#8635;</button></a></td>
-                        <td><a href="#"><button class="table_btn">X</button></a></td>
+                        <td><a href="{{ route('admin_panel_su_update_users_page', ['id' => $el->id]) }}"><button class="table_btn">&#8635;</button></a></td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -75,6 +73,17 @@
         <div class="notification">
             <div class="field_message">
                 {{ session('error') }}
+            </div>
+            <div class="delete_notification">
+                +
+            </div>
+        </div>
+    @endif
+
+    @if(session('success'))
+        <div class="notification">
+            <div class="field_message">
+                {{ session('success') }}
             </div>
             <div class="delete_notification">
                 +
