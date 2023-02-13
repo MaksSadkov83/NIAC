@@ -1,4 +1,6 @@
-fetch('/api/admin/exam/')
+let id_exam = document.querySelector(".h2").id;
+
+fetch(`/api/admin/exam/${id_exam}`)
   .then(response => response.json())
   .then(result => Create_form_for_cards(result));
 
@@ -51,7 +53,30 @@ function Add_field_topic(event){
 
 function Create_form_for_cards(data_cards){
 
-  let container = document.querySelector(".container_for_card");
+    let container = document.querySelector(".container_for_card");
+
+    if(data_cards.data.question_topics.length == 0){
+        let base_topic = document.createElement('div');
+        base_topic.innerHTML = `
+            <div class="card_topic">
+                <div class="topic">
+                    <input type="text" placeholder="Тема...">
+                </div>
+            <div class="container_card_topic">
+                <button class="add_card_question" onclick="Add_card_question(event)">
+                    <div class="container_card_btn">
+                        + Создать вопорос
+                    </div>
+                </button>
+            </div>
+            </div>
+            <button class="create_card_topic" onclick="Add_field_topic(event)">
+                + Создать тему
+            </button>
+        `;
+        container.appendChild(base_topic);
+    }
+
 
   const topics = [];
 
@@ -111,7 +136,7 @@ function Create_form_for_cards(data_cards){
     topics.push(topic_questions);
   });
 
-  data_topics.forEach((item_3)=>{
+  topics.forEach((item_3)=>{
     let card_topic = document.createElement("div");
     card_topic.classList.add("card_topic");
     card_topic.innerHTML = item_3;
