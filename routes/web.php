@@ -40,3 +40,7 @@ Route::controller(\App\Http\Controllers\AdminPanelSuperUserController::class)->g
    Route::post('/admin/link_exam', 'link_exam')->name('admin_panel_su_link_exam');
    Route::post('/admin/link_exam/{id}/update', 'update_link_exam')->name('admin_panel_su_update_link_exam');
 });
+
+Route::controller(\App\Http\Controllers\ExamStartController::class)->group(function (){
+    Route::get('/exam_start/{id}', 'index')->name('exam_start');
+});

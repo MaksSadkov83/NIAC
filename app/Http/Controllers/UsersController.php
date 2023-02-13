@@ -28,7 +28,7 @@ class UsersController extends Controller
                 }
             } else if ($user_role->text_ == 'Экзаменующийся'){
                 if ($user->active == 1){
-                    echo 'Экзаменующийся';
+                    return redirect()->route('exam_start', ['id' => $request->input('id')]);
                 }
             }
         }

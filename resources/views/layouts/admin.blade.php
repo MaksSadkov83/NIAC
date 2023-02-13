@@ -27,5 +27,6 @@
 </div>
 <script src="/assets/scripts/js/code_for_topic_question.js"></script>
 <script src="/assets/scripts/js/code_delete_notification.js"></script>
+<script src="/assets/scripts/js/code_for_passing_exam.js"></script>
 </body>
 </html>

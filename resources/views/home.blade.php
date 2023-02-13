@@ -26,6 +26,17 @@
         </div>
     </div>
 
+    @if(session('error'))
+        <div class="notification">
+            <div class="field_message">
+               {{ session('error') }}
+            </div>
+            <div class="delete_notification">
+                +
+            </div>
+        </div>
+    @endif
+
 {{--    <form action="{{ route('registration') }}" method="POST" id="form_registration">--}}
 {{--        @csrf--}}
 {{--        <div class="div_form">--}}
@@ -47,12 +58,5 @@
 {{--        <button type="submit" class="brn_reg_avto_sumbit">Зарегистрироваться</button>--}}
 {{--    </form>--}}
 
-{{--        <div class="notification">--}}
-{{--            <div class="field_message">--}}
-{{--                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quaerat at consequuntur, unde voluptas fuga, repellat molestias molestiae quasi--}}
-{{--            </div>--}}
-{{--            <div class="delete_notification">--}}
-{{--                +--}}
-{{--            </div>--}}
-{{--        </div>--}}
+
 @endsection
