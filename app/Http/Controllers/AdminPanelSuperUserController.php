@@ -170,7 +170,7 @@ class AdminPanelSuperUserController extends Controller
                 'text_' => $request->input('role_user_choose'),
             ]);
 
-            return redirect()->route('admin_panel_su_show_users');
+            return redirect()->route('admin_panel_su_show_users')->with('success', 'Пользователь успешно создан!');
         } catch (\Illuminate\Database\QueryException){
             return back()->withError('Пользователь с таким номером телефона уже существует!!!');
         }

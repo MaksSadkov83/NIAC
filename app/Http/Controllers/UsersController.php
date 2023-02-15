@@ -24,7 +24,7 @@ class UsersController extends Controller
                 }
             } else if ($user_role->text_ == 'Экзаменатор'){
                 if ($user->active == 1){
-                    echo 'Экзаменатор';
+                    return redirect()->route('admin_panel_examiner');
                 }
             } else if ($user_role->text_ == 'Экзаменующийся'){
                 if ($user->active == 1){

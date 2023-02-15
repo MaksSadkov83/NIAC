@@ -46,3 +46,18 @@ Route::controller(\App\Http\Controllers\AdminPanelSuperUserController::class)->g
 Route::controller(\App\Http\Controllers\ExamStartController::class)->group(function (){
     Route::get('/exam_start/{id}', 'index')->name('exam_start');
 });
+
+Route::controller(\App\Http\Controllers\AdminPanelExaminerController::class)->group(function (){
+    Route::get('/admin_examiner', 'index')->name('admin_panel_examiner');
+    Route::get('/admin_examiner/users', 'users_show')->name('admin_panel_examiner_users_show');
+    Route::get('/admin_examiner/exam', 'show_exam')->name('admin_panel_examiner_show_exam');
+    Route::get('/admin_examiner/link_exam', 'link_exam_page')->name('admin_panel_examiner_link_exam_page');
+    Route::get('/admin_examiner/result_exam', 'show_result_exam')->name('admin_panel_examiner_show_result_exam');
+    Route::get('/admin_examiner/users/{id}/update', 'show_update_users')->name('admin_panel_examiner_show_update_users');
+    Route::get('/admin_examiner/exam/{id}', 'question_topic_and_question_page')->name('admin_panel_examiner_question_topic_and_question_page');
+    Route::get('/admin_examiner/exam/{id}/update', 'update_exam_page')->name('admin_panel_examiner_update_exam_page');
+
+    Route::post('/admin_examiner/users', 'add_users')->name('admin_panel_examiner_add_users');
+    Route::post('/admin_examiner/users/{id}/update', 'update_users')->name('admin_panel_examiner_update_users');
+    Route::post('/admin_examiner/exam', 'add_exam')->name('admin_panel_examiner_add_exam');
+});
