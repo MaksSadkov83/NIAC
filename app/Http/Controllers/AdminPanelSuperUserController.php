@@ -134,6 +134,27 @@ class AdminPanelSuperUserController extends Controller
             ]);
     }
 
+//    Страница обновление названия теста
+    public function update_exam_page($id){
+        $editor_exam = DB::table('editors')
+            ->join('users', 'users.id', '=', 'editors.editor_id')
+            ->join('exams', 'exams.id', '=', 'editors.exam_id')
+            ->select('editors.id', 'editors.editor_id', 'exams.text_', 'editors.exam_id')
+            ->where('editors.id', '=', $id)
+            ->first();
+
+        $examiners = DB::table('users')
+            ->join('role_users', 'users.id', '=', 'role_users.user_id')
+            ->select('users.id', 'users.name')
+            ->where([
+                ['role_users.text_', '=', 'Экзаменатор'],
+                ['users.active', '=', '1']
+            ])
+            ->get();
+
+        return view('admin_panel_super_user.update_exam', ['editor_exam' => $editor_exam, 'examiners' => $examiners]);
+    }
+
 //    Логика добавления пользователей в систему
     public function add_users(Request $request){
         try {
@@ -226,5 +247,20 @@ class AdminPanelSuperUserController extends Controller
         StudentExam::destroy($id);
 
         return redirect()->route('admin_panel_su_link_exam')->with('success', 'Запись успешно удалена!!');
+    }
+
+//    Логика обновления названия теста
+    public function update_exam($id, Request $request){
+        $editor = Editors::find($id);
+
+        $editor->editor_id = $request->input('examiner_id');
+        $editor->save();
+
+        $exam = Exam::find($request->input('exam_id'));
+
+        $exam->text_ = $request->input('exam_text');
+        $exam->save();
+
+        return redirect()->route('admin_panel_su_show_exam')->with('success', 'Запись успешно обновлена!');
     }
 }

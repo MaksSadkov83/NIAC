@@ -17,47 +17,24 @@
 @endsection
 
 @section('content')
-    <div class="container_table_and_student">
-        <form class="form_add_student" action="{{ route('admin_panel_su_add_exam') }}" method="POST" id="form_add_group">
+    <div class="contauiner_table_and_student">
+        <form class="form_add_student" action="{{ route('admin_panel_su_update_exam', ['id' => $editor_exam->id]) }}" method="POST" id="form_add_group">
             @csrf
             <h2 style="margin-bottom: 50px;">
-                <span style="color: #3c8bff;">></span> Добавить Тест:
+                <span style="color: #3c8bff;">></span> Обновить Тест "{{ $editor_exam->text_ }}":
             </h2>
             Название теста:
-            <input type="text" name="exam_text" id="exam_text">
+            <input type="text" name="exam_text" id="exam_text" value="{{ $editor_exam->text_ }}">
             Экзаменатор:
-            <input list="examiner_list" name="examiner_id" id="examiner_id">
+            <input list="examiner_list" name="examiner_id" id="examiner_id" value="{{ $editor_exam->editor_id }}">
             <datalist id="examiner_list">
                 @foreach($examiners as $el)
                     <option value="{{ $el->id }}">{{ $el->name }}</option>
                 @endforeach
             </datalist>
-            <button class="add_btn" type="submit">Добавить</button>
+            <input type="hidden" name="exam_id" id="exam_id" value="{{ $editor_exam->exam_id }}">
+            <button class="add_btn" type="submit">Обновить</button>
         </form>
-        <div class="container_table">
-            <table id="table_for_all">
-                <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Тест</th>
-                    <th>Автор</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($data as $el)
-                    <tr>
-                        <td>{{ $el->id }}</td>
-                        <td><a href="{{ route('question_topic_and_question_page', ['id' => $el->exam_id]) }}">{{ $el->text_ }}</a></td>
-                        <td>{{ $el->name }}</td>
-                        <td><a href="{{ route('admin_panel_su_update_exam', ['id' => $el->id]) }}"><button class="table_btn">&#8635;</button></a></td>
-                        <td><a href="#"><button class="table_btn">X</button></a></td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
     </div>
 
     @if(session('success'))

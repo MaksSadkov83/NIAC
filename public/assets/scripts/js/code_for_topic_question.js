@@ -54,6 +54,7 @@ function Add_field_topic(event){
 function Create_form_for_cards(data_cards){
 
     let container = document.querySelector(".container_for_card");
+    const btn_create_card_topic = document.querySelector(".create_card_topic");
 
     if(data_cards.data.question_topics.length == 0){
         let base_topic = document.createElement('div');
@@ -70,11 +71,8 @@ function Create_form_for_cards(data_cards){
                 </button>
             </div>
             </div>
-            <button class="create_card_topic" onclick="Add_field_topic(event)">
-                + Создать тему
-            </button>
         `;
-        container.appendChild(base_topic);
+        container.insertBefore(base_topic, btn_create_card_topic);
     }
 
 
@@ -140,6 +138,7 @@ function Create_form_for_cards(data_cards){
     let card_topic = document.createElement("div");
     card_topic.classList.add("card_topic");
     card_topic.innerHTML = item_3;
-    container.appendChild(card_topic);
+    container.insertBefore(card_topic, btn_create_card_topic);
   });
+
 }

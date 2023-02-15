@@ -33,12 +33,14 @@ Route::controller(\App\Http\Controllers\AdminPanelSuperUserController::class)->g
    Route::get('/admin/users/{id}/update', 'update_users_page')->name('admin_panel_su_update_users_page');
    Route::get('/admin/link_exam/{id}/update', 'update_link_exam_page')->name('admin_panel_su_update_link_exam_page');
    Route::get('/admin/link_exam/delete/{id}', 'delete_link_exam')->name('admin_panel_su_delete_link_exam');
+   Route::get('/admin/exam/{id}/update', 'update_exam_page')->name('admin_panel_su_update_exam');
 
-   Route::post('/admin/users', 'add_users')->name('add_user');
-   Route::post('/admin/users/{id}/update', 'update_users')->name('update_users');
+   Route::post('/admin/users', 'add_users')->name('admin_panel_su_add_user');
+   Route::post('/admin/users/{id}/update', 'update_users')->name('admin_panel_su_update_users');
    Route::post('/admin/exam', 'add_exam')->name('admin_panel_su_add_exam');
    Route::post('/admin/link_exam', 'link_exam')->name('admin_panel_su_link_exam');
    Route::post('/admin/link_exam/{id}/update', 'update_link_exam')->name('admin_panel_su_update_link_exam');
+   Route::post('/admin/exam/{id}/update', 'update_exam')->name('admin_panel_su_update_exam');
 });
 
 Route::controller(\App\Http\Controllers\ExamStartController::class)->group(function (){

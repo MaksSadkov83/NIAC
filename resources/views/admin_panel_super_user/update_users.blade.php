@@ -18,7 +18,7 @@
 
 @section('content')
     <div class="container_table_and_student">
-        <form class="form_add_student" action="{{ route('update_users', ['id' => $data->id]) }}" method="POST" id="form_add_group">
+        <form class="form_add_student" action="{{ route('admin_panel_su_update_users', ['id' => $data->id]) }}" method="POST" id="form_add_group">
             @csrf
             <h2 style="margin-bottom: 50px;">
                 <span style="color: #3c8bff;">></span> Обновить пользователя <span style="color: #3c8bff;">></span> {{ $data->name }}:
@@ -43,7 +43,7 @@
             @else
                 <input type="checkbox" id="active_user" name="active_user" value="1">
             @endif
-            <button class="add_btn" type="submit">Добавить</button>
+            <button class="add_btn" type="submit">Обновить</button>
         </form>
     </div>
 @endsection

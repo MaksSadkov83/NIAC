@@ -20,5 +20,9 @@
     <div class="container_for_card">
         <h2 id="{{ $id }}" class="h2">Тест: {{ $name_exam }}</h2>
         <br>
+        <button class="create_card_topic" onclick="Add_field_topic(event)">
+            + Создать тему
+        </button>
     </div>
+
 @endsection

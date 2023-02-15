@@ -39,7 +39,7 @@
             </datalist>
             Минимальный балл за тест:
             <input type="number" name="min_score" id="min_score" value="{{ $student_answers->min_score }}">
-            <button class="add_btn" type="submit">Привязать</button>
+            <button class="add_btn" type="submit">Обновить</button>
         </form>
     </div>
 @endsection
