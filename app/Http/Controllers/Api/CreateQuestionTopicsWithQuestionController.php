@@ -31,7 +31,27 @@ class CreateQuestionTopicsWithQuestionController extends Controller
      */
     public function store(Request $request)
     {
+        $array = $request->all();
 
+        for ($i = 0; $i < count($array); ++$i){
+            for ($j = 2; $j < count($array[$i]); ++$j){
+                $question = Question::create([
+                   'question_topic_id' => $array[$i]['id_topic'],
+                   'text_' => $array[$i]['name_question']
+                ]);
+
+              for ($l = 0; $l < count($array[$i]['options']); ++$l){
+                  Option::create([
+                     'question_id' => $question->id,
+                      'text_' => $array[$i]['options'][$l]['name_option'],
+                      'score' => $array[$i]['options'][$l]['score'],
+                  ]);
+              }
+
+            }
+        }
+
+        return response()->json('Вопросы успешно сохранены', 200);
     }
 
     /**
