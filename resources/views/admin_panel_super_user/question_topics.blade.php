@@ -21,7 +21,7 @@
         <form class="form_add_student" action="{{ route('admin_panel_su_add_topic', ['id' => $id_exam]) }}" method="POST" id="form_add_group">
             @csrf
             <h2 style="margin-bottom: 50px;">
-                <span style="color: #3c8bff;">></span> Добавить Тему:
+                <span style="color: #3c8bff;">></span> Добавить Тему к тесту: "{{ $name_exam }}":
             </h2>
             Название темы:
             <input type="text" name="topic_text" id="topic_text">

@@ -11,7 +11,7 @@ class Question extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['text_'];
+    protected $fillable = ['text_', 'question_topic_id'];
 
     public function options(){
         return $this->hasMany(Option::class);

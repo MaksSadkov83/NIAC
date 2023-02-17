@@ -100,7 +100,8 @@ class AdminPanelSuperUserController extends Controller
 //    Страница добавления тем к тесту
     public function topic_show($id){
         $topic = QuestionTopic::where('exam_id', $id)->get();
-        return view('admin_panel_super_user.question_topics', ['data' => $topic, 'id_exam' => $id]);
+        $name_exam = Exam::find($id)->text_;
+        return view('admin_panel_super_user.question_topics', ['data' => $topic, 'id_exam' => $id, 'name_exam' => $name_exam]);
     }
 
 //    Страница добавления вопросов и ответов к вопросам

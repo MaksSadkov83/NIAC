@@ -1,4 +1,4 @@
-<p align="center"<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></p>
 
 ## Инструкци по разворачиванию системы "Тестирование" с помощью docker
 
@@ -14,42 +14,42 @@
 6. В корне папки (не в подпапках) создайте файл docker-compose.yml
 7. В созданном файле docker-compose.yml пропишите:
 
-    version: '3.8'
+    * version: '3.8'
+   *
+    * services:
+    * 
+      * web:
+        * build: ./web
+        * environment:
+          * - APACHE_RUN_USER=#1000
+        * volumes:
+          * - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+        * ports:
+          * - 8080:80
+        * working_dir: ${APP_PATH_CONTAINER}
 
-    services:
+      * db:
+        * image: mariadb:10.6
+        * restart: always
+        * environment:
+          * MYSQL_ROOT_PASSWORD: 123456
+        * volumes:
+          * - ${DB_PATH_HOST}:/var/lib/mysql
 
-      web:
-        build: ./web
-        environment:
-          - APACHE_RUN_USER=#1000
-        volumes:
+      * phpmyadmin:
+        * image: phpmyadmin
+        * restart: always
+        * ports:
+          * - 6080:80
+        * environment:
+          * - PMA_ARBITRARY=1
+
+      * composer:
+        * image: composer:2.5.3
+        * volumes:
           - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
-        ports:
-          - 8080:80
-        working_dir: ${APP_PATH_CONTAINER}
-
-      db:
-        image: mariadb:10.6
-        restart: always
-        environment:
-          MYSQL_ROOT_PASSWORD: 123456
-        volumes:
-          - ${DB_PATH_HOST}:/var/lib/mysql
-
-      phpmyadmin:
-        image: phpmyadmin
-        restart: always
-        ports:
-          - 6080:80
-        environment:
-          - PMA_ARBITRARY=1
-
-      composer:
-        image: composer:2.5.3
-        volumes:
-          - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
-        working_dir: ${APP_PATH_CONTAINER}
-        command: composer install
+        * working_dir: ${APP_PATH_CONTAINER}
+        * command: composer install
   
 8. Запустите терминал и перейдите в папку с проектом.
 9. В корень папки клонируйте проект
@@ -59,12 +59,12 @@
 13. В терминале запустите команду php artisan key:generate. exit
 14. Перейдите в папку NIAC в файлике .env пропишите:
 
-    DB_CONNECTION=mysql
-    DB_HOST=db
-    DB_PORT=3306
-    DB_DATABASE=niac_test
-    DB_USERNAME=root
-    DB_PASSWORD=123456
+    * DB_CONNECTION=mysql
+    * DB_HOST=db
+    * DB_PORT=3306
+    * DB_DATABASE=niac_test
+    * DB_USERNAME=root
+    * DB_PASSWORD=123456
     
 15. Запустите браузер, в адресной строке введите http://127.0.0.1:6080
 16. Создайте базу данных с названием niac_test (ОБЯЗАТЕЛЬНО!!!!)

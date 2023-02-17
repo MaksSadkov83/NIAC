@@ -20,6 +20,18 @@
     <div class="container_for_card">
         <h2 id="{{ $id }}" class="h2">Тема: {{ $name_topic }}</h2>
         <br>
+        <div class="card_topic">
+            <div class="container_card_topic">
+                <button class="add_card_question" onclick="Add_card_question(event)">
+                    <div class="container_card_btn">
+                        + Создать вопорос
+                    </div>
+                </button>
+            </div>
+        </div>
+        <button class="create_card_topic" onclick="Add_field_topic(event)">
+            Сохранить
+        </button>
     </div>
 
 @endsection

@@ -54,70 +54,49 @@ function Add_field_topic(event){
 
 function Create_form_for_cards(data_cards){
 
-    let container = document.querySelector(".container_for_card");
+    let container = document.querySelector(".container_card_topic");
+    const btn_add_question = document.querySelector(".add_card_question");
 
-    const topics = [];
+    const questions = [];
 
-    data_cards.data.question_topics.forEach((item, index)=>{
+    data_cards.data.questions.forEach((item, index)=>{
 
-        let topic = `
-      <div class="topic" id="${item.id}">
-        <input type="text" placeholder="Тема..." value="${item.question_topic_text}">
+        let question = `
+      <div class="question" id="${item.id}">
+        <textarea type="text" class="textarea_question" placeholder="Вопрос...">${item.question_text}
+        </textarea>
       </div>
     `;
 
-        let questions = [];
+        let answers = [];
 
-        item.questions.forEach((item_2)=>{
-
-            let question = `
-        <div class="question" id="${item_2.id}">
-          <textarea type="text" class="textarea_question" placeholder="Вопрос...">${item_2.question_text}
-          </textarea>
-        </div>
+        item.options.forEach((item_2)=>{
+            let answer = `
+          <li class="li_inp">
+            <input type="text" class="inp_answer" placeholder="Ответ..." value="${item_2.option_text}">
+            <input type="number" class="inp_score" placeholder="Балл" value="${item_2.score}">
+          </li>
       `;
-
-            let answers = [];
-
-            item_2.options.forEach((item_3, index)=>{
-                let answer = `
-          <li class="li_inp"><input type="text" class="inp_answer" placeholder="Ответ..." value="${item_3.option_text}"><input type="number" class="inp_score" placeholder="Балл" value="${item_3.score}"></li>
-        `;
-                answers.push(answer);
-            })
-
-            let question_answers = `
-        <form class="card_question">
-          ${question}
-          <ul class="answers">
-            ${answers.join("")}
-            <li><button class="btn_answers" onclick="Add_field_answer(event)">+ Добавить ответ</button></li>
-          </ul>
-        </form>
-      `;
-
-            questions.push(question_answers);
+            answers.push(answer);
         });
 
-        let topic_questions = `
-      ${topic}
-      <div class="container_card_topic">
-        ${questions.join("")}
-        <button class="add_card_question" onclick="Add_card_question(event)">
-          <div class="container_card_btn">
-            + Создать вопорос
-          </div>
-        </button>
-      </div>
+        let question_answers = `
+      <form class="card_question">
+        ${question}
+        <ul class="answers">
+          ${answers.join("")}
+          <li><button class="btn_answers" onclick="Add_field_answer(event)">+ Добавить ответ</button></li>
+        </ul>
+      </form>
     `;
+        questions.push(question_answers);
 
-        topics.push(topic_questions);
     });
 
-    data_topics.forEach((item_3)=>{
-        let card_topic = document.createElement("div");
-        card_topic.classList.add("card_topic");
+    questions.forEach((item_3)=>{
+        let card_topic = document.createElement("form");
+        card_topic.classList.add("card_question");
         card_topic.innerHTML = item_3;
-        container.appendChild(card_topic);
+        container.insertBefore(card_topic, btn_add_question);
     });
 }
