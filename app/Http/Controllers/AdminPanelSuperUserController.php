@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Editors;
 use App\Models\Exam;
+use App\Models\QuestionTopic;
 use App\Models\RoleUsers;
 use App\Models\StudentExam;
 use App\Models\Users;
@@ -96,10 +97,16 @@ class AdminPanelSuperUserController extends Controller
         return view('admin_panel_super_user.update_users', ['data' => $users]);
     }
 
-//    Страница добавления тем, вопросов и ответов к вопросам
-    public function question_topic_and_question_page($id){
-        $exam = Exam::find($id);
-        return view('admin_panel_super_user.question_topic_and_question', ['name_exam' => $exam->text_, 'id' => $id]);
+//    Страница добавления тем к тесту
+    public function topic_show($id){
+        $topic = QuestionTopic::where('exam_id', $id)->get();
+        return view('admin_panel_super_user.question_topics', ['data' => $topic, 'id_exam' => $id]);
+    }
+
+//    Страница добавления вопросов и ответов к вопросам
+    public function question_and_option($id){
+        $topic = QuestionTopic::find($id);
+        return view('admin_panel_super_user.question_and_option', ['name_topic' => $topic->text_, 'id' => $id]);
     }
 
 //    Страница обновления привязки теста к студенту
@@ -262,5 +269,15 @@ class AdminPanelSuperUserController extends Controller
         $exam->save();
 
         return redirect()->route('admin_panel_su_show_exam')->with('success', 'Запись успешно обновлена!');
+    }
+
+//    Логика добавления тем к тесту
+    public function add_topic($id, Request $request){
+        QuestionTopic::create([
+           'text_' => $request->input('topic_text'),
+           'exam_id' => $request->input('exam_id')
+        ]);
+
+        return redirect()->route('admin_panel_su_show_topic', ['id' => $id])->with('success', 'Запись успешно создана!!');
     }
 }

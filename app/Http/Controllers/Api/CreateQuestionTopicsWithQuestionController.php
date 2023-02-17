@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ExamResource;
+use App\Http\Resources\QuestionTopicResource;
 use App\Models\Exam;
+use App\Models\QuestionTopic;
 use Illuminate\Http\Request;
 
 class CreateQuestionTopicsWithQuestionController extends Controller
@@ -38,7 +40,7 @@ class CreateQuestionTopicsWithQuestionController extends Controller
      */
     public function show($id)
     {
-        return new ExamResource(Exam::with('question_topics')->find($id));
+        return new QuestionTopicResource(QuestionTopic::with('question')->find($id));
     }
 
     /**

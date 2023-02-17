@@ -18,20 +18,15 @@
 
 @section('content')
     <div class="container_table_and_student">
-        <form class="form_add_student" action="{{ route('admin_panel_su_add_exam') }}" method="POST" id="form_add_group">
+        <form class="form_add_student" action="{{ route('admin_panel_su_add_topic', ['id' => $id_exam]) }}" method="POST" id="form_add_group">
             @csrf
             <h2 style="margin-bottom: 50px;">
-                <span style="color: #3c8bff;">></span> Добавить Тест:
+                <span style="color: #3c8bff;">></span> Добавить Тему:
             </h2>
-            Название теста:
-            <input type="text" name="exam_text" id="exam_text">
-            Экзаменатор:
-            <input list="examiner_list" name="examiner_id" id="examiner_id">
-            <datalist id="examiner_list">
-                @foreach($examiners as $el)
-                    <option value="{{ $el->id }}">{{ $el->name }}</option>
-                @endforeach
-            </datalist>
+            Название темы:
+            <input type="text" name="topic_text" id="topic_text">
+            <input type="hidden" name="exam_id" id="exam_id" value="{{ $id_exam }}">
+
             <button class="add_btn" type="submit">Добавить</button>
         </form>
         <div class="container_table">
@@ -39,8 +34,7 @@
                 <thead>
                 <tr>
                     <th>id</th>
-                    <th>Тест</th>
-                    <th>Автор</th>
+                    <th>Название темы</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -49,9 +43,8 @@
                 @foreach($data as $el)
                     <tr>
                         <td>{{ $el->id }}</td>
-                        <td><a href="{{ route('admin_panel_su_show_topic', ['id' => $el->exam_id]) }}">{{ $el->text_ }}</a></td>
-                        <td>{{ $el->name }}</td>
-                        <td><a href="{{ route('admin_panel_su_update_exam', ['id' => $el->id]) }}"><button class="table_btn">&#8635;</button></a></td>
+                        <td><a href="{{ route('admin_panel_su_question_and_option', ['id' => $el->id]) }}">{{ $el->text_ }}</a></td>
+                        <td><a href="#"><button class="table_btn">&#8635;</button></a></td>
                         <td><a href="#"><button class="table_btn">X</button></a></td>
                     </tr>
                 @endforeach
@@ -59,15 +52,4 @@
             </table>
         </div>
     </div>
-
-    @if(session('success'))
-        <div class="notification">
-            <div class="field_message">
-                {{ session('success') }}
-            </div>
-            <div class="delete_notification">
-                +
-            </div>
-        </div>
-    @endif
 @endsection

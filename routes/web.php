@@ -27,7 +27,8 @@ Route::controller(\App\Http\Controllers\AdminPanelSuperUserController::class)->g
    Route::get('/admin', 'index')->name('admin_panel_su');
    Route::get('/admin/users', 'show_users')->name('admin_panel_su_show_users');
    Route::get('/admin/exam', 'show_exam')->name('admin_panel_su_show_exam');
-   Route::get('/admin/exam/{id}', 'question_topic_and_question_page')->name('question_topic_and_question_page');
+   Route::get('/admin/exam/{id}', 'topic_show')->name('admin_panel_su_show_topic');
+   Route::get('/admin/exam/theme/{id}', 'question_and_option')->name('admin_panel_su_question_and_option');
    Route::get('/admin/link_exam', 'show_link_exam')->name('admin_panel_su_link_exam');
    Route::get('/admin/result_exam', 'show_result_exam')->name('admin_panel_us_show_result_exam');
    Route::get('/admin/users/{id}/update', 'update_users_page')->name('admin_panel_su_update_users_page');
@@ -41,23 +42,9 @@ Route::controller(\App\Http\Controllers\AdminPanelSuperUserController::class)->g
    Route::post('/admin/link_exam', 'link_exam')->name('admin_panel_su_link_exam');
    Route::post('/admin/link_exam/{id}/update', 'update_link_exam')->name('admin_panel_su_update_link_exam');
    Route::post('/admin/exam/{id}/update', 'update_exam')->name('admin_panel_su_update_exam');
+   Route::post('/admin/exam/{id}', 'add_topic')->name('admin_panel_su_add_topic');
 });
 
 Route::controller(\App\Http\Controllers\ExamStartController::class)->group(function (){
     Route::get('/exam_start/{id}', 'index')->name('exam_start');
-});
-
-Route::controller(\App\Http\Controllers\AdminPanelExaminerController::class)->group(function (){
-    Route::get('/admin_examiner', 'index')->name('admin_panel_examiner');
-    Route::get('/admin_examiner/users', 'users_show')->name('admin_panel_examiner_users_show');
-    Route::get('/admin_examiner/exam', 'show_exam')->name('admin_panel_examiner_show_exam');
-    Route::get('/admin_examiner/link_exam', 'link_exam_page')->name('admin_panel_examiner_link_exam_page');
-    Route::get('/admin_examiner/result_exam', 'show_result_exam')->name('admin_panel_examiner_show_result_exam');
-    Route::get('/admin_examiner/users/{id}/update', 'show_update_users')->name('admin_panel_examiner_show_update_users');
-    Route::get('/admin_examiner/exam/{id}', 'question_topic_and_question_page')->name('admin_panel_examiner_question_topic_and_question_page');
-    Route::get('/admin_examiner/exam/{id}/update', 'update_exam_page')->name('admin_panel_examiner_update_exam_page');
-
-    Route::post('/admin_examiner/users', 'add_users')->name('admin_panel_examiner_add_users');
-    Route::post('/admin_examiner/users/{id}/update', 'update_users')->name('admin_panel_examiner_update_users');
-    Route::post('/admin_examiner/exam', 'add_exam')->name('admin_panel_examiner_add_exam');
 });
