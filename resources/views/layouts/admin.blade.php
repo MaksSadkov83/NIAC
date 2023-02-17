@@ -28,5 +28,6 @@
 <script src="/assets/scripts/js/code_for_topic_question.js"></script>
 <script src="/assets/scripts/js/code_delete_notification.js"></script>
 <script src="/assets/scripts/js/code_for_passing_exam.js"></script>
+<script src="/assets/scripts/js/send_questions_and_options.js"></script>
 </body>
 </html>

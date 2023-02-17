@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ExamResource;
 use App\Http\Resources\QuestionTopicResource;
 use App\Models\Exam;
+use App\Models\Option;
+use App\Models\Question;
 use App\Models\QuestionTopic;
 use Illuminate\Http\Request;
 
@@ -29,7 +31,7 @@ class CreateQuestionTopicsWithQuestionController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
