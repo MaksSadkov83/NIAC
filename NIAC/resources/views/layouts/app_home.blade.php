@@ -11,6 +11,6 @@
 <body>
     @yield('home_content')
 
-    <script src="/assets/scripts/js/code_delete_notification.js"></script>
+    <script src="./assets/scripts/js/code_delete_notification.js"></script>
 </body>
 </html>
