@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Option;
 use Illuminate\Http\Request;
 
 class AddOptionToQuestion extends Controller
@@ -25,7 +26,20 @@ class AddOptionToQuestion extends Controller
      */
     public function store(Request $request)
     {
-        return  response()->json(json_encode($request->all()));
+        $array = $request->all();
+
+        for ($i = 0; $i < count($array); ++$i){
+            for ($j = 2; $j < count($array[$i]); ++$j){
+                Option::create([
+                   'question_id' => $array[$i]['id_question'],
+                    'text_' => $array[$i]['name_option'],
+                    'score' => $array[$i]['score']
+                ]);
+            }
+        }
+
+        return response()->json('Успешно сохранено', 200);
+//        return response()->json(json_encode($request->all()), 200);
     }
 
     /**

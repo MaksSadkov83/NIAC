@@ -8,6 +8,7 @@ function Add_field_answer(event){
     event.preventDefault();
     const answers = event.target.closest("li");
     const li = document.createElement('li');
+    li.className = 'new_option';
     li.innerHTML = `<input type="text" class="inp_answer" placeholder="Ответ..."><input type="number" class="inp_score" placeholder="Балл"></input>`;
     answers.insertAdjacentElement("beforebegin", li);
 }

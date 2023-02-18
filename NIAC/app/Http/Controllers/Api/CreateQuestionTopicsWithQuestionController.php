@@ -51,7 +51,7 @@ class CreateQuestionTopicsWithQuestionController extends Controller
             }
         }
 
-        return response()->json('Вопросы успешно сохранены', 200);
+        return response()->json('Успешно сохранено', 200);
     }
 
     /**
