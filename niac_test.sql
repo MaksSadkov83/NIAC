@@ -211,8 +211,7 @@ CREATE TABLE `role_users` (
 LOCK TABLES `role_users` WRITE;
 /*!40000 ALTER TABLE `role_users` DISABLE KEYS */;
 INSERT INTO `role_users` VALUES
-(1,1,'SuperAdmin'),
-(2,2,'Экзаменатор');
+(1,1,'SuperAdmin');
 /*!40000 ALTER TABLE `role_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,8 +265,7 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES
-(1,'Super User','$2y$10$rGeguZ3gdYtL2cxZM7q6TOKhfFWToeu7EHeLSxzEupAB6Jq5.OE3e','+7 (999) 999-99-99',1),
-(2,'Экзаменатор','$2y$10$q8fLWdk4V/Qd3B7sfbEh1elNxxKNIE2Zwb8jiHoYZwvYkuPBBJ/AS','89112346534',1);
+(1,'Super User','$2y$10$rGeguZ3gdYtL2cxZM7q6TOKhfFWToeu7EHeLSxzEupAB6Jq5.OE3e','+7 (999) 999-99-99',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -280,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-17 20:30:05
+-- Dump completed on 2023-02-18 12:05:48
