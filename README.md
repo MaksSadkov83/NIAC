@@ -16,7 +16,7 @@ APP_PATH_CONTAINER=/var/www/html/
 7. Перейдите в папку NIAC, продублируйте файл .env.example и переименуйте его в .env
 8. В файлике .env пропишите следующие значения в полях:
 ```
-DB_CONNECTION=bd
+DB_CONNECTION=db
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=niac_test
