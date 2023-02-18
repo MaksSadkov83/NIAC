@@ -29,7 +29,7 @@
                 </button>
             </div>
         </div>
-        <button class="create_card_topic" onclick="Send_json()">
+        <button class="create_card_topic" onclick="Send()">
             Сохранить
         </button>
     </div>

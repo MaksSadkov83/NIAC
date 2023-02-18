@@ -74,7 +74,27 @@ class CreateQuestionTopicsWithQuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $array = $request->all();
+
+        for ($i = 0; $i < count($array); ++$i){
+            for ($j = 0; $j < count($array[$i]); ++$j){
+                $question = Question::find($array[$i]['id_question']);
+
+                $question->text_ = $array[$i]['name_question'];
+                $question->save();
+
+                for ($l = 0; $l < count($array[$i]['options']); ++$l){
+                    $option = Option::find($array[$i]['options'][$l]['id_option']);
+
+                    $option->text_ = $array[$i]['options'][$l]['name_option'];
+                    $option->score = $array[$i]['options'][$l]['score'];
+
+                    $option->save();
+                }
+            }
+        }
+
+        return response()->json('Записи успешно обновлены', 200);
     }
 
     /**

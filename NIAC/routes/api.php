@@ -19,5 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
-    'admin/exam/topic' => \App\Http\Controllers\Api\CreateQuestionTopicsWithQuestionController::class
+    'admin/exam/topic' => \App\Http\Controllers\Api\CreateQuestionTopicsWithQuestionController::class,
+    'admin/exam/topic/question/option' => \App\Http\Controllers\Api\AddOptionToQuestion::class,
 ]);

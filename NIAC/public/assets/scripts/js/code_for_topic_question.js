@@ -27,6 +27,7 @@ function Add_card_question(event){
     const questions = event.target;
     const div = document.createElement("form");
     div.classList.add("card_question");
+    div.classList.add("new");
     div.innerHTML = card_question;
     questions.insertAdjacentElement("beforebegin", div);
 }
@@ -72,7 +73,7 @@ function Create_form_for_cards(data_cards){
 
         item.options.forEach((item_2)=>{
             let answer = `
-          <li class="li_inp">
+          <li class="li_inp" id="${item_2.id}">
             <input type="text" class="inp_answer" placeholder="Ответ..." value="${item_2.option_text}">
             <input type="number" class="inp_score" placeholder="Балл" value="${item_2.score}">
           </li>
@@ -81,13 +82,11 @@ function Create_form_for_cards(data_cards){
         });
 
         let question_answers = `
-      <form class="card_question">
         ${question}
         <ul class="answers">
           ${answers.join("")}
           <li><button class="btn_answers" onclick="Add_field_answer(event)">+ Добавить ответ</button></li>
         </ul>
-      </form>
     `;
         questions.push(question_answers);
 
@@ -96,6 +95,7 @@ function Create_form_for_cards(data_cards){
     questions.forEach((item_3)=>{
         let card_topic = document.createElement("form");
         card_topic.classList.add("card_question");
+        card_topic.classList.add("update");
         card_topic.innerHTML = item_3;
         container.insertBefore(card_topic, btn_add_question);
     });
