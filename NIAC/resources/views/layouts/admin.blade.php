@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/public/assets/css/style.css">
     <title>Тестирование Админ панель</title>
 </head>
 <body>
@@ -28,10 +28,10 @@
         @yield('content')
     </div>
 </div>
-<script src="/assets/scripts/js/code_for_topic_question.js"></script>
-<script src="/assets/scripts/js/code_delete_notification.js"></script>
-<script src="/assets/scripts/js/code_for_passing_exam.js"></script>
-<script src="/assets/scripts/js/send_questions_and_options.js"></script>
-<script src="/assets/scripts/js/code_for_create_exam.js"></script>
+<script src="/public/assets/scripts/js/code_for_topic_question.js"></script>
+<script src="/public/assets/scripts/js/code_delete_notification.js"></script>
+<script src="/public/assets/scripts/js/code_for_passing_exam.js"></script>
+<script src="/public/assets/scripts/js/send_questions_and_options.js"></script>
+<script src="/public/assets/scripts/js/code_for_create_exam.js"></script>
 </body>
 </html>

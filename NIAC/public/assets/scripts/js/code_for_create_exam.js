@@ -48,7 +48,7 @@ function Create_exam(result){
 
 function Send_result_exam(){
   let form = document.querySelector(".form_slide");
-  fetch("", {
+  fetch("/api/result_exam", {
     method: "POST",
     body: new FormData(form)
   })

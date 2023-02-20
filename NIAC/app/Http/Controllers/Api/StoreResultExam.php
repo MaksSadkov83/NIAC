@@ -25,7 +25,7 @@ class StoreResultExam extends Controller
      */
     public function store(Request $request)
     {
-
+        return response()->json(json_encode($request));
     }
 
     /**
