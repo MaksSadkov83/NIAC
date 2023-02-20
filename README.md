@@ -14,7 +14,7 @@ APP_PATH_HOST=./NIAC
 APP_PATH_CONTAINER=/var/www/html/
 ```
 5. Перейдите в папку NIAC, продублируйте файл .env.example и переименуйте его в .env
-6. В файле .env пропишите:
+6. В файле .env замените строки:
 ```
 DB_CONNECTION=mysql
 DB_HOST=db
