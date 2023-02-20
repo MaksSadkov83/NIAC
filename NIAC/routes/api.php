@@ -22,4 +22,5 @@ Route::apiResources([
     'admin/exam/topic' => \App\Http\Controllers\Api\CreateQuestionTopicsWithQuestionController::class,
     'admin/exam/topic/question/option' => \App\Http\Controllers\Api\AddOptionToQuestion::class,
     'exam_start' => \App\Http\Controllers\Api\ExamStartController::class,
+    'result_exam' => \App\Http\Controllers\Api\StoreResultExam::class,
 ]);
