@@ -3,7 +3,7 @@
 @section('home_content')
     <div class="btn_avtorization_registration">
         <div class="btn_reg_avto">
-            <img src="./assets/svg/avto.svg" id="svg_reg_avto">
+            <img src="/public/assets/svg/avto.svg" id="svg_reg_avto">
         </div>
         <button class="btn_avto_reg_text">Авторизация</button>
     </div>

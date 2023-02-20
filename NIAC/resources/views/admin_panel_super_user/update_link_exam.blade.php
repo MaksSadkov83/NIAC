@@ -4,11 +4,11 @@
 
 @section('who') > Super Admin > {{ \Illuminate\Support\Facades\Auth::id() }}@endsection
 
-@section('link_exam')<img src="/assets/img/desc.png" alt="" class="desc">@endsection
+@section('link_exam')<img src="/public/assets/img/desc.png" alt="" class="desc">@endsection
 
 @section('side-bar')
     <div class="container_side-bar">
-        <img src="/assets/img/nao_logo2 — копия (2).png" alt="" class="logo_nao">
+        <img src="/public/assets/img/nao_logo2 — копия (2).png" alt="" class="logo_nao">
         <a href="{{ route('admin_panel_su_show_exam') }}">@yield('create_exam')Тесты</a>
         <a href="{{ route('admin_panel_su_show_users') }}">@yield('users')Пользователи</a>
         <a href="{{ route('admin_panel_su_link_exam') }}">@yield('link_exam')Привязать тесты</a>
