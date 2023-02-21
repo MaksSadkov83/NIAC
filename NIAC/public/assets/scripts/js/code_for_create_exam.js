@@ -9,8 +9,8 @@ function Create_exam(result){
   const slides = document.querySelector(".slides");
   const fr = document.createDocumentFragment();
   const fr_2 = document.createDocumentFragment();
-  console.log(result[1])
-  result[1].forEach((element, index) => {
+  console.log(result)
+  result[0].forEach((element, index) => {
     const li_q = document.createElement('li');
     li_q.append(element.question_text);
     li_q.id = `question_${index+1}`;
@@ -18,8 +18,10 @@ function Create_exam(result){
 
     const li_answers = [];
 
-    element.options.forEach(element_2 => {
-      const li_answer = `<li><input type="radio" name="answer" id="${element_2.id}"><label for="${element_2.id}">${element_2.option_text}</label></li>`;
+    console.log("1: ", element)
+
+    element.options.forEach((element_2) => {
+      const li_answer = `<li><input type="radio" name="answer_${index+1}" id="${element_2.id}"><label for="${element_2.id}">${element_2.option_text}</label></li>`;
       li_answers.push(li_answer);
     })
 
